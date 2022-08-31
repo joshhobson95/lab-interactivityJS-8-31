@@ -67,6 +67,10 @@ const crossOffMovie = (event) => {
 
 }
 
+const revealMessage = (event) => {
+    const myTimeout = setTimeout(myGreeting, 1000);
+
+}
 
 
 
