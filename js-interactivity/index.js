@@ -12,6 +12,8 @@
 // //addEventListner
 // inputField.addEventListener('click', addMovie)
 
+const message = document.querySelector('#message')
+
 
 
 const addMovie = (event) => {
@@ -23,9 +25,19 @@ const addMovie = (event) => {
 
     let movieTitle = document.createElement ("span")
 
+    movieTitle.addEventListener('click', crossOffMovie)
+
     movieTitle.textContent = inputField.value
 
     movie.appendChild(movieTitle)
+
+    let deleteButton = document.createElement('button')
+
+    deleteButton.textContent = 'x'
+
+    deleteButton.addEventListener('click', deleteMovie)
+
+    movie.appendChild(deleteButton)
 
 document.querySelector('ul').appendChild(movie)
 
@@ -34,3 +46,28 @@ document.querySelector('ul').appendChild(movie)
 }
 
 document.querySelector('form').addEventListener('submit', addMovie)
+
+
+const deleteMovie = (event) => {
+    event.preventDefault()
+
+    event.target.parentNode.remove() 
+
+    message.textContent = 'Movie Deleted!'
+}
+
+const crossOffMovie = (event) => {
+    event.preventDefault()
+
+    event.target.classList.toggle('checked')
+
+    if (event.target.classList.contains('checked')) 
+        return message.textContent = "Movie Watched."
+     else return message.textContent = "Movie Added Back!"
+
+}
+
+
+
+
+
